@@ -47,9 +47,22 @@ select * from campaign;
 select * from contacts;
 select * from subcategory;
 
+select sum(pledged) as total_amount_pledged
+from campaign
 
+select sum(pledged)/count(backers_count) as avg_pledge
+from campaign
 
-
+select campaign.category_id, category.category_id, category.category_name
+from campaign
+inner join category
+on campaign.category_id = category.category_id;
+select campaign.category_id, campaign.contact_id, category.category_id, contacts.first_name, contacts.last_name
+from category
+inner join campaign
+on category.category_id = campaign.category_id
+inner join contacts
+on campaign.contact_id = contacts.contact_id;
 
 
 
